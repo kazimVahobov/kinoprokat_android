@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".common_activities.LoginPage"
+    android:background="@drawable/main_gradient">
+
+    <TextView
+        android:id="@+id/login_error"
+        style="@style/errorAlert"
+        android:visibility="invisible"
+        android:text="@string/invalid_password" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="35dp"
+            android:scaleType="centerInside"
+            android:src="@mipmap/main_logo_white" />
+
+        <LinearLayout
+            android:id="@+id/login_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:visibility="invisible"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                style="@style/loginPageCard"
+                app:cardCornerRadius="10dp">
+
+                <EditText
+                    android:id="@+id/login_txt"
+                    style="@style/loginPageEditText"
+                    android:hint="@string/enter_login" />
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                style="@style/loginPageCard"
+                app:cardCornerRadius="10dp">
+
+                <EditText
+                    android:id="@+id/password_txt"
+                    style="@style/loginPageEditText"
+                    android:hint="@string/enter_password"
+                    android:inputType="textPassword" />
+            </android.support.v7.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/sign_in_btn"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="14sp"
+                    android:layout_alignParentEnd="true"
+                    android:textAllCaps="false"
+                    android:background="@drawable/btn_ripple_accent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="@string/sing_in"
+                    android:textColor="@color/smoke_white"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

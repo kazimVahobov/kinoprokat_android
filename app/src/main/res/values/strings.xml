@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Kinoprokat</string>
+    <string name="title_activity_theater_report_list">TheaterReportList</string>
+
+    <!-- Login Page-->
+    <string name="enter_login">Введите логин</string>
+    <string name="enter_password">Введите пароль</string>
+    <string name="sing_in">Войти</string>
+    <string name="login_not_found">Пользователь не найден</string>
+    <string name="invalid_password">Неверный пароль</string>
+    <string name="error_of_network">Проблема с подключением</string>
+    <string name="have_not_permission">У вас нет доступа</string>
+    <string name="try_connect_again">Попробуйте подключиться заново</string>
+
+
+    <string name="today_report">Отчёт на сегодня</string>
+
+    <string name="not_prepared">Не подготовлен</string>
+    <string name="prepared_no_send">Подготовлен - Не отправлен</string>
+    <string name="send_no_confirm">Отправлен - Не подтверждён</string>
+    <string name="send_confirm">Подтверждён</string>
+
+    <string name="statistic">Статистика</string>
+    <string name="was_on_rent">Было в прокате</string>
+    <string name="showed_session">Поставлено</string>
+    <string name="sales">Продано</string>
+
+    <string name="show_all_reports">Показать все отчёты</string>
+    <string name="all_reports">Все отчёты</string>
+
+    <string name="movies_short_dot">филь.</string>
+    <string name="sessions_short_dot">сеанс.</string>
+    <string name="tickets_short_dot">бил.</string>
+    <string name="sum_short_dot">сум.</string>
+
+    <string name="tickets_count_short_double_dot">Кол-во билетов:</string>
+    <string name="sum_double_dot">Сумма:</string>
+    <string name="sessions_double_dot">Сеансы:</string>
+    <string name="loading">Загрузка</string>
+    <string name="you_have_not_access">У Вас нет доступа</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="detail">Подробно</string>
+    <string name="common">Общее</string>
+    <string name="sessions">Сеансы</string>
+    <string name="without_cont">Без договора</string>
+    <string name="child_tickets_double_dots">Детские билеты:</string>
+    <string name="adult_tickets_double_dots">Взрослые билеты:</string>
+    <string name="overall_double_dot">Всего:</string>
+</resources>
