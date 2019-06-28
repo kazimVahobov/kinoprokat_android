@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".common_activities.ThReportDetail"></activity>
+        <activity android:name=".modules.theater.activities.TheaterReportForm"></activity>
+        <activity android:name=".common_activities.ThReportDetail" />
         <activity
             android:name=".modules.theater.activities.TheaterReportList"
             android:label="@string/title_activity_theater_report_list"

@@ -68,8 +68,8 @@
     <style name="tabLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/gray_300</item>
-        <item name="tabGravity">center</item>
+        <item name="android:background">@color/white</item>
+        <item name="tabGravity">fill</item>
         <item name="tabIndicatorHeight">3dp</item>
         <item name="tabIndicatorColor">@color/colorPrimary</item>
         <item name="tabSelectedTextColor">@color/colorPrimary</item>

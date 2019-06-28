@@ -15,7 +15,7 @@ public class NetworkService {
 
     private static NetworkService mInstance;
 
-    private String BASE_URL = "http://192.168.0.5:8080/api/";
+    private String BASE_URL = "http://192.168.0.112:8080/api/";
     private Retrofit mRetrofit;
     private String token;
     private String token_key = "token";

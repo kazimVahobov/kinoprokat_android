@@ -48,4 +48,17 @@
     <string name="child_tickets_double_dots">Детские билеты:</string>
     <string name="adult_tickets_double_dots">Взрослые билеты:</string>
     <string name="overall_double_dot">Всего:</string>
+
+    <string name="new_report">Новый отчёт</string>
+    <string name="edit">Редактирование</string>
+    <string name="by_contract">По договору</string>
+    <string name="without_contract">Без договора</string>
+    <string name="date_of_report_double_dot">Дата отчёта:</string>
+
+    <string name="ok">Хорошо</string>
+    <string name="no">Отмена</string>
+    <string name="warning">Внимание</string>
+    <string name="cannot_change_date_on_editing">Нельзя изменить дату при редактировании отчёта</string>
+    <string name="on_date_change_unsaved_date_has_been_lost">При изменении даты все несохранённые данные будут потеряны</string>
+
 </resources>
