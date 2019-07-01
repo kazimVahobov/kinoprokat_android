@@ -8,7 +8,9 @@ import com.example.kinoprokat.models.Theater;
 import com.example.kinoprokat.models.TheaterReport;
 import com.example.kinoprokat.models.Token;
 import com.example.kinoprokat.models.User;
+import com.example.kinoprokat.modules.theater.models.RequestByDate;
 
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -39,6 +41,9 @@ public interface APIes {
 
     @GET("theater-report/{id}")
     public Call<TheaterReport> getThReportsById(@Path("id") String id);
+
+    @POST("theater-report/by-date")
+    public Call<TheaterReport> getThReportsByDate(@Body RequestByDate body);
 
     // theater APIs ////////////////////////////////////
     @GET("theater/{id}")

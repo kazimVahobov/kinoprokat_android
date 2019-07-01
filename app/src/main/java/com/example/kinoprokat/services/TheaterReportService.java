@@ -3,6 +3,7 @@ package com.example.kinoprokat.services;
 import android.content.Context;
 
 import com.example.kinoprokat.R;
+import com.example.kinoprokat.enums.ReportState;
 import com.example.kinoprokat.models.ReportWithCont;
 import com.example.kinoprokat.models.TheaterReport;
 
@@ -22,28 +23,28 @@ public class TheaterReportService {
         return mInstance;
     }
 
-    public int defineReportStatusByDate(List<TheaterReport> reports, Date date) {
-        int result = 0;
+    public ReportState defineReportStatusByDate(List<TheaterReport> reports, Date date) {
+        ReportState state = ReportState.NEW;
         Calendar currentCalendar = Calendar.getInstance();
         currentCalendar.setTime(date);
         Calendar reportCalendar = Calendar.getInstance();
         for (TheaterReport report : reports) {
             reportCalendar.setTime(report.getDate());
             if (currentCalendar.get(Calendar.YEAR) == reportCalendar.get(Calendar.YEAR) && currentCalendar.get(Calendar.DAY_OF_YEAR) == reportCalendar.get(Calendar.DAY_OF_YEAR)) {
-                result = getReportStatus(report);
+                state = getReportStatus(report);
             }
         }
-        return result;
+        return state;
     }
 
-    public int getReportStatus(TheaterReport report) {
-        int result = 1;
+    public ReportState getReportStatus(TheaterReport report) {
+        ReportState state = ReportState.SAVED;
         if (report.isSent() && !report.isConfirm()) {
-            result = 2;
+            state = ReportState.SENT;
         } else if (report.isSent() && report.isConfirm()) {
-            result = 3;
+            state = ReportState.CONFIRMED;
         }
-        return result;
+        return state;
     }
 
     public String getReportStatus(Context context, TheaterReport report) {

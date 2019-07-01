@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.kinoprokat.R;
+import com.example.kinoprokat.enums.ReportState;
 import com.example.kinoprokat.models.TheaterReport;
 import com.example.kinoprokat.services.NetworkService;
 import com.example.kinoprokat.services.TheaterReportService;
@@ -100,16 +101,16 @@ public class ThMainPageTodayReport extends Fragment implements View.OnClickListe
                     if (response.body().size() != 0) {
                         setTodayReportStatus(thReportService.defineReportStatusByDate(response.body(), new Date()));
                     } else {
-                        setTodayReportStatus(0);
+                        setTodayReportStatus(ReportState.NEW);
                     }
                 } else {
-                    setTodayReportStatus(4);
+                    setTodayReportStatus(ReportState.ERROR);
                 }
             }
 
             @Override
             public void onFailure(Call<List<TheaterReport>> call, Throwable t) {
-                setTodayReportStatus(4);
+                setTodayReportStatus(ReportState.ERROR);
             }
         });
     }
@@ -118,11 +119,11 @@ public class ThMainPageTodayReport extends Fragment implements View.OnClickListe
 //    if status = 1 - prepared && no send
 //    if status = 2 - send && no confirm
 //    if status = 3 - send && confirm
-    private void setTodayReportStatus(int status) {
+    private void setTodayReportStatus(ReportState state) {
         progressBar.setVisibility(View.GONE);
         msg_layout.setVisibility(View.VISIBLE);
-        switch (status) {
-            case 0: {
+        switch (state) {
+            case NEW: {
                 today_report_status.setText(getString(R.string.not_prepared));
                 option_layout.setVisibility(View.VISIBLE);
                 fab_option.setVisibility(View.GONE);
@@ -130,7 +131,7 @@ public class ThMainPageTodayReport extends Fragment implements View.OnClickListe
                 canEdit = false;
                 break;
             }
-            case 1: {
+            case SAVED: {
                 today_report_status.setText(getString(R.string.prepared_no_send));
                 option_layout.setVisibility(View.VISIBLE);
                 fab_option.setVisibility(View.VISIBLE);
@@ -138,7 +139,7 @@ public class ThMainPageTodayReport extends Fragment implements View.OnClickListe
                 canEdit = true;
                 break;
             }
-            case 2: {
+            case SENT: {
                 today_report_status.setText(getString(R.string.send_no_confirm));
                 option_layout.setVisibility(View.VISIBLE);
                 fab_option.setVisibility(View.VISIBLE);
@@ -146,7 +147,7 @@ public class ThMainPageTodayReport extends Fragment implements View.OnClickListe
                 canEdit = false;
                 break;
             }
-            case 3: {
+            case CONFIRMED: {
                 today_report_status.setText(getString(R.string.send_confirm));
                 option_layout.setVisibility(View.VISIBLE);
                 fab_option.setVisibility(View.VISIBLE);
@@ -154,7 +155,7 @@ public class ThMainPageTodayReport extends Fragment implements View.OnClickListe
                 canEdit = false;
                 break;
             }
-            case 4: {
+            case ERROR: {
                 today_report_status.setText(getString(R.string.error_of_network));
             }
         }

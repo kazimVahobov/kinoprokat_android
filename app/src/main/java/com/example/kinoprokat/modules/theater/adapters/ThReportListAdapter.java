@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.kinoprokat.R;
+import com.example.kinoprokat.enums.ReportState;
 import com.example.kinoprokat.models.TheaterReport;
 import com.example.kinoprokat.services.RoleService;
 import com.example.kinoprokat.services.TheaterReportService;
@@ -68,7 +69,7 @@ public class ThReportListAdapter extends RecyclerView.Adapter<ThReportListAdapte
         holder.tickets_count.setText(tickets_str);
         holder.sum.setText(sum_str);
 
-        if (service.getReportStatus(report) == 1) {
+        if (service.getReportStatus(report) == ReportState.SAVED) {
 
             if (roleService.checkPermission(0, permissionKey)) {
                 holder.send.setVisibility(View.VISIBLE);

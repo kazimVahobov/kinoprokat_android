@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".modules.theater.activities.TheaterReportForm"
+    android:background="@color/white"
     android:orientation="vertical"
-    android:background="@color/white">
+    tools:context=".modules.theater.activities.TheaterReportForm">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -31,36 +31,43 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:text="@string/date_of_report_double_dot"
-            android:layout_alignParentStart="true"/>
+            android:text="@string/date_of_report_double_dot" />
 
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12.06.2019 г."
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/edit_date"/>
+            android:layout_toStartOf="@+id/edit_date"
+            android:text="12.06.2019 г." />
 
         <ImageButton
             android:id="@+id/edit_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_edit"
+            android:layout_alignParentEnd="true"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:padding="5dp"
-            android:tint="@color/colorAccent"
             android:background="@drawable/bg_btn_without_borders_gray"
-            android:layout_alignParentEnd="true"/>
+            android:padding="5dp"
+            android:src="@drawable/ic_edit"
+            android:tint="@color/colorAccent" />
 
     </RelativeLayout>
+
+    <include
+        android:id="@+id/msg_layout"
+        layout="@layout/message_layout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tabLayout"
