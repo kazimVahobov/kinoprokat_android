@@ -136,7 +136,7 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
             }
             case 2: {
                 permissionKey = roleService.th_report_key;
-                if (roleService.checkPermission(Permissions.READ, permissionKey)) {
+                if (roleService.checkPermission(Permissions.READ.ordinal(), permissionKey)) {
                     Intent intent = new Intent(this, TheaterMainPage.class);
                     startActivity(intent);
                 } else {

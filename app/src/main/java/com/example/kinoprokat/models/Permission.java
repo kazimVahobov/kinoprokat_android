@@ -1,22 +1,20 @@
 package com.example.kinoprokat.models;
 
-import com.example.kinoprokat.enums.Permissions;
-
 public class Permission {
 
-    private Permissions value;
+    private int value;
 
     private String groupName;
 
     public Permission() {
     }
 
-    public Permission(Permissions value, String groupName) {
+    public Permission(int value, String groupName) {
         this.value = value;
         this.groupName = groupName;
     }
 
-    public Permissions getValue() {
+    public int getValue() {
         return value;
     }
 

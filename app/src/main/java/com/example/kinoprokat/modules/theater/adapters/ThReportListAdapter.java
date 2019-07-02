@@ -72,7 +72,7 @@ public class ThReportListAdapter extends RecyclerView.Adapter<ThReportListAdapte
 
         if (service.getReportStatus(report) == ReportState.SAVED) {
 
-            if (roleService.checkPermission(Permissions.CREATE, permissionKey)) {
+            if (roleService.checkPermission(Permissions.CREATE.ordinal(), permissionKey)) {
                 holder.send.setVisibility(View.VISIBLE);
                 holder.send.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -84,7 +84,7 @@ public class ThReportListAdapter extends RecyclerView.Adapter<ThReportListAdapte
                 holder.send.setVisibility(View.GONE);
             }
 
-            if (roleService.checkPermission(Permissions.UPDATE, permissionKey)) {
+            if (roleService.checkPermission(Permissions.UPDATE.ordinal(), permissionKey)) {
                 holder.edit.setVisibility(View.VISIBLE);
                 holder.edit.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -96,7 +96,7 @@ public class ThReportListAdapter extends RecyclerView.Adapter<ThReportListAdapte
                 holder.edit.setVisibility(View.GONE);
             }
 
-            if (roleService.checkPermission(Permissions.DELETE, permissionKey)) {
+            if (roleService.checkPermission(Permissions.DELETE.ordinal(), permissionKey)) {
                 holder.delete.setVisibility(View.VISIBLE);
                 holder.delete.setOnClickListener(new View.OnClickListener() {
                     @Override

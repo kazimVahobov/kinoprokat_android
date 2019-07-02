@@ -110,7 +110,7 @@ public class TheaterReportList extends AppCompatActivity implements ThReportList
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         fab = findViewById(R.id.fab);
-        if (roleService.checkPermission(Permissions.CREATE, permissionKey)) {
+        if (roleService.checkPermission(Permissions.CREATE.ordinal(), permissionKey)) {
             fab.setVisibility(View.VISIBLE);
             recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
                 @Override

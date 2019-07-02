@@ -27,7 +27,7 @@ public class RoleService {
         this.currentRole = currentRole;
     }
 
-    public boolean checkPermission(Permissions value, String groupName) {
+    public boolean checkPermission(int value, String groupName) {
         return currentRole.getPermissions().contains(new Permission(value, groupName));
     }
 
