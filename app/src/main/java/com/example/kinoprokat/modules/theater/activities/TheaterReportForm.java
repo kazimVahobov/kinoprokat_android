@@ -7,7 +7,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
@@ -116,10 +115,14 @@ public class TheaterReportForm extends AppCompatActivity implements CustomAlertD
             }
         });
 
-        setInitialDateTime();
+        if (isEdit) {
+            getThReportById(reportId);
+        } else {
+            setInitialDateTime();
+        }
     }
 
-    private void getReportByDate() {
+    private void getThReportByDate() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String date = formatter.format(calendar.getTime());
         networkService.getApies()
@@ -139,6 +142,20 @@ public class TheaterReportForm extends AppCompatActivity implements CustomAlertD
                         setViewMode(ReportState.ERROR);
                     }
                 });
+    }
+
+    private void getThReportById(String id) {
+        networkService.getApies().getThReportsById(id).enqueue(new Callback<TheaterReport>() {
+            @Override
+            public void onResponse(Call<TheaterReport> call, Response<TheaterReport> response) {
+                initFragments(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<TheaterReport> call, Throwable t) {
+                setViewMode(ReportState.ERROR);
+            }
+        });
     }
 
     private void setViewMode(ReportState state) {
@@ -199,12 +216,20 @@ public class TheaterReportForm extends AppCompatActivity implements CustomAlertD
         tabLayout.setupWithViewPager(viewPager);
     }
 
+    private void initFragments(TheaterReport report) {
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new ThReportFormSessions(), getString(R.string.by_contract));
+        adapter.addFragment(new ThReportFormWithoutCont(), getString(R.string.without_contract));
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
     // установка начальных даты и времени
     private void setInitialDateTime() {
         date.setText(DateUtils.formatDateTime(this,
                 calendar.getTimeInMillis(),
                 DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR));
-        getReportByDate();
+        getThReportByDate();
     }
 
     private void showDateDialog() {

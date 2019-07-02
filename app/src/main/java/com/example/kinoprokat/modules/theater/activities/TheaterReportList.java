@@ -3,6 +3,7 @@ package com.example.kinoprokat.modules.theater.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.kinoprokat.R;
 import com.example.kinoprokat.common_activities.ThReportDetail;
+import com.example.kinoprokat.enums.Permissions;
 import com.example.kinoprokat.models.TheaterReport;
 import com.example.kinoprokat.modules.theater.adapters.ThReportListAdapter;
 import com.example.kinoprokat.services.NetworkService;
@@ -40,6 +42,8 @@ public class TheaterReportList extends AppCompatActivity implements ThReportList
     private TextView error;
     private FloatingActionButton fab;
 
+    private final String ID_KEY = "id";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +62,7 @@ public class TheaterReportList extends AppCompatActivity implements ThReportList
     private void getReports() {
         networkService.getApies().getThReportsByThId(networkService.getJobId()).enqueue(new Callback<List<TheaterReport>>() {
             @Override
-            public void onResponse(Call<List<TheaterReport>> call, Response<List<TheaterReport>> response) {
+            public void onResponse(@NonNull Call<List<TheaterReport>> call, Response<List<TheaterReport>> response) {
                 if (response.isSuccessful()) {
                     error.setVisibility(View.GONE);
                     setAdapter(response.body());
@@ -106,7 +110,7 @@ public class TheaterReportList extends AppCompatActivity implements ThReportList
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         fab = findViewById(R.id.fab);
-        if (roleService.checkPermission(0, permissionKey)) {
+        if (roleService.checkPermission(Permissions.CREATE, permissionKey)) {
             fab.setVisibility(View.VISIBLE);
             recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
                 @Override
@@ -146,7 +150,9 @@ public class TheaterReportList extends AppCompatActivity implements ThReportList
 
     @Override
     public void editClick(String id) {
-        Toast.makeText(this, id, Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, TheaterReportForm.class);
+        intent.putExtra(ID_KEY, id);
+        startActivity(intent);
     }
 
     @Override

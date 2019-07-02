@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kinoprokat.R;
+import com.example.kinoprokat.enums.Permissions;
 import com.example.kinoprokat.models.Login;
 import com.example.kinoprokat.models.Role;
 import com.example.kinoprokat.models.Token;
@@ -135,7 +136,7 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
             }
             case 2: {
                 permissionKey = roleService.th_report_key;
-                if (roleService.checkPermission(1, permissionKey)) {
+                if (roleService.checkPermission(Permissions.READ, permissionKey)) {
                     Intent intent = new Intent(this, TheaterMainPage.class);
                     startActivity(intent);
                 } else {

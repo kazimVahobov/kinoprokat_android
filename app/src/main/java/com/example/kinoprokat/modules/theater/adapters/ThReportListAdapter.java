@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.kinoprokat.R;
+import com.example.kinoprokat.enums.Permissions;
 import com.example.kinoprokat.enums.ReportState;
 import com.example.kinoprokat.models.TheaterReport;
 import com.example.kinoprokat.services.RoleService;
@@ -71,7 +72,7 @@ public class ThReportListAdapter extends RecyclerView.Adapter<ThReportListAdapte
 
         if (service.getReportStatus(report) == ReportState.SAVED) {
 
-            if (roleService.checkPermission(0, permissionKey)) {
+            if (roleService.checkPermission(Permissions.CREATE, permissionKey)) {
                 holder.send.setVisibility(View.VISIBLE);
                 holder.send.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -83,7 +84,7 @@ public class ThReportListAdapter extends RecyclerView.Adapter<ThReportListAdapte
                 holder.send.setVisibility(View.GONE);
             }
 
-            if (roleService.checkPermission(2, permissionKey)) {
+            if (roleService.checkPermission(Permissions.UPDATE, permissionKey)) {
                 holder.edit.setVisibility(View.VISIBLE);
                 holder.edit.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -95,7 +96,7 @@ public class ThReportListAdapter extends RecyclerView.Adapter<ThReportListAdapte
                 holder.edit.setVisibility(View.GONE);
             }
 
-            if (roleService.checkPermission(3, permissionKey)) {
+            if (roleService.checkPermission(Permissions.DELETE, permissionKey)) {
                 holder.delete.setVisibility(View.VISIBLE);
                 holder.delete.setOnClickListener(new View.OnClickListener() {
                     @Override

@@ -1,5 +1,6 @@
 package com.example.kinoprokat.services;
 
+import com.example.kinoprokat.enums.Permissions;
 import com.example.kinoprokat.models.Permission;
 import com.example.kinoprokat.models.Role;
 
@@ -26,7 +27,7 @@ public class RoleService {
         this.currentRole = currentRole;
     }
 
-    public boolean checkPermission(int value, String groupName) {
+    public boolean checkPermission(Permissions value, String groupName) {
         return currentRole.getPermissions().contains(new Permission(value, groupName));
     }
 
